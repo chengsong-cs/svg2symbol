@@ -20,5 +20,16 @@
   "bugs": {
     "url": "https://github.com/sunshiner/svg2symbol/issues"
   },
-  "homepage": "https://github.com/sunshiner/svg2symbol#readme"
+  "homepage": "https://github.com/sunshiner/svg2symbol#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-svgmin": "^1.2.3",
+    "gulp-svgo": "^1.0.3",
+    "path": "^0.12.7",
+    "svgo": "^0.7.2"
+  },
+  "dependencies": {
+    "cheerio": "0.*",
+    "gulp-util": "^3.0.0"
+  }
 }

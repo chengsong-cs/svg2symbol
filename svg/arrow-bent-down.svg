@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>实心下降</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M4.8783403,11.9913275 C2.33128521,11.9913275 2.47452205,10.6859626 3.85007583,9.07738292 C5.22642983,7.46709018 11.1039415,0.586514869 11.1039415,0.586514869 C11.6392792,-0.195504956 12.5067023,-0.195504956 13.04204,0.586514869 C13.04204,0.586514869 19.0707905,7.66409408 20.2951054,9.07738292 C21.5194203,10.4898152 21.7866891,11.9913275 19.2692416,11.9913275 L15.6715163,11.9913275 C15.6715163,11.9913275 16.0316089,24 2,24 C2,24 9.19545064,22.4522346 9.19545064,11.9913275 L4.8783403,11.9913275 Z" id="下降" fill="#000000" transform="translate(11.600000, 12.000000) scale(1, -1) translate(-11.600000, -12.000000) "></path>
+    </g>
+</svg>
