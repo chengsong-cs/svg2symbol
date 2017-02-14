@@ -1,0 +1,24 @@
+{
+  "name": "svg2symbol",
+  "version": "0.0.1",
+  "description": "transform svg to symbol",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sunshiner/svg2symbol.git"
+  },
+  "keywords": [
+    "svg",
+    "symbol",
+    "gulp"
+  ],
+  "author": "chengsong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sunshiner/svg2symbol/issues"
+  },
+  "homepage": "https://github.com/sunshiner/svg2symbol#readme"
+}
