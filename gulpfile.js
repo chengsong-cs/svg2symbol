@@ -8,13 +8,18 @@ gulp.task('svgstore', function () {
         .src('svg/*.svg')
         .pipe(svgmin({
             plugins: [{
-                removeComments: true
+                removeAttrs: {
+                    attrs: ['opacity', 'fill']
+                }
+            },{
+                transformsWithOnePath: {
+                    width: 10,
+                    height: 10
+                }
             }, {
                 removeXMLNS: true
             }, {
                 removeTitle: true
-            }, {
-                transformsWithOnePath: true
             }]
         }))
         .pipe(svg2symbol())
