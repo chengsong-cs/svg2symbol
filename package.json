@@ -1,5 +1,5 @@
 {
-  "name": "svg2symbol",
+  "name": "gulp-svg2symbol",
   "version": "0.0.1",
   "description": "transform svg to symbol",
   "main": "index.js",
