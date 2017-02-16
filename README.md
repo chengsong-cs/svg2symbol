@@ -5,9 +5,13 @@ transfrom SVG file to symbol file
 
 # usage
 
-look at gulpfile.js
+recommend use with `gulp-svgmin`
 
 ```
+var gulp = require('gulp');
+var svg2symbol = require('gulp-svg2symbol');
+var svgmin = require('gulp-svgmin');
+
 gulp.task('svgstore', function () {
     return gulp
         .src('svg/*.svg')
@@ -30,6 +34,8 @@ gulp.task('svgstore', function () {
         .pipe(svg2symbol())
         .pipe(gulp.dest('symbol'));
 });
+
+gulp.task('default', ['svgstore']);
 
 ```
 
