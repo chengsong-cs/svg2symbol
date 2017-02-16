@@ -11,43 +11,46 @@ module.exports = function (config) {
 
     stream._transform = function transform(file, encoding, cb) {
         var $ = cheerio.load('<symbol></symbol>', { xmlMode: true })
+        var fileNameNoExt = path.basename(file.relative, path.extname(file.relative))
         var fileName
+        var $svg = cheerio.load(file.contents.toString(), { xmlMode: true })('svg')
+        var iconPath = $svg.find('path').attr('d')
+        var viewBoxAttr = $svg.attr('viewBox')
+        var $symbol = $('symbol')
+        var pathReg = /[Z|z]/g
+        var nameReg = /[A-Z|a-z|0-9]-o$/g
+
 
         if (file.isStream()) {
             return cb(new gutil.PluginError('gulp-svg2symbol', 'Streams are not supported!'))
         }
-
-        if (file.isNull()) return cb()
-
-        var $svg = cheerio.load(file.contents.toString(), { xmlMode: true })('svg')
-
-        if ($svg.length === 0) return cb()
-
-        var idAttr = path.basename(file.relative, path.extname(file.relative))
-        var viewBoxAttr = $svg.attr('viewBox')
-        var $symbol = $('symbol')
-
-        if (!fileName) {
-            fileName = path.basename(file.path, '.svg')
-
-            if (fileName === '.' || !fileName) {
-                fileName = 'svg2symbol.symbol'
-            } else {
-                fileName += '.symbol'
-            }
+        if (file.isNull() || $svg.length === 0) {
+            return cb()
         }
 
-        $symbol.attr('id', 'icon-' + idAttr)
+        if (fileNameNoExt === '.' || !fileNameNoExt) {
+            fileName = 'svg2symbol.symbol'
+        } else {
+            fileName = fileNameNoExt + '.symbol'
+        }
+
+        if (pathReg.test(iconPath) && !nameReg.test(fileNameNoExt)) {
+            $symbol.attr('type', 'fill')
+        } else {
+            $symbol.attr('type', 'stroke')
+        }
+
+        $symbol.attr('id', 'icon-' + fileNameNoExt)
+
         if (viewBoxAttr) {
             $symbol.attr('viewBox', viewBoxAttr)
         }
 
-        var attrs = $svg[0].attribs
-
         $symbol.append($svg.contents())
+
         var file = new gutil.File({ path: fileName, contents: new Buffer($.xml()) })
+
         this.push(file)
-        // file.contents = new Buffer($.xml());
         cb()
     }
 
