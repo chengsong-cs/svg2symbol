@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/sunshiner/svg2symbol.svg?branch=master)](https://travis-ci.org/sunshiner/svg2symbol)
+
 # svg2symbol
 transfrom SVG file to symbol file
 
