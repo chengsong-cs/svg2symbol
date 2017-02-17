@@ -5,37 +5,87 @@ transfrom SVG file to symbol file
 
 # usage
 
-recommend use with `gulp-svgmin`
+recommend use with `gulp-svgmin` to optimize svg
+
+***notice:*** if you want to know why i write a lot of config code for svgmin plugin, please look at this [issue]('https://github.com/svg/svgo/issues/665')
 
 ```
 var gulp = require('gulp');
-var svg2symbol = require('gulp-svg2symbol');
+var svg2symbol = require('./index');
 var svgmin = require('gulp-svgmin');
+var path = require('path');
 
-gulp.task('svgstore', function () {
+gulp.task('svg', function () {
     return gulp
-        .src('svg/*.svg')
+        .src('./test/*.svg')
         .pipe(svgmin({
-            plugins: [{
-                removeAttrs: {
-                    attrs: ['opacity', 'fill']
+            full: true,
+            plugins: [
+                "removeDoctype",
+                "removeXMLProcInst",
+                "removeComments",
+                "removeMetadata",
+                {
+                    removeXMLNS: true
+                },
+                "removeEditorsNSData",
+                "cleanupAttrs",
+                "minifyStyles",
+                "convertStyleToAttrs",
+                "cleanupIDs",
+                {
+                    removeRasterImages: true
+                },
+                "removeUselessDefs",
+                "cleanupNumericValues",
+                "cleanupListOfValues",
+                "convertColors",
+                "removeUnknownsAndDefaults",
+                "removeNonInheritableGroupAttrs",
+                "removeUselessStrokeAndFill",
+                "cleanupEnableBackground",
+                "removeHiddenElems",
+                "removeEmptyText",
+                "convertShapeToPath",
+                "moveElemsAttrsToGroup",
+                "moveGroupAttrsToElems",
+                "collapseGroups",
+                "convertPathData",
+                "convertTransform",
+                "removeEmptyAttrs",
+                "removeEmptyContainers",
+                "mergePaths",
+                "removeUnusedNS",
+                {
+                    sortAttrs: true
+                },
+                {
+                    removeTitle: true
+                },
+                "removeDesc",
+                "removeDimensions",
+                // "removeElementsByAttr",
+                // "addClassesToSVGElement",
+                {
+                    removeStyleElement: true
+                },
+                // "addAttributesToSVGElement",
+                {
+                    transformsWithOnePath: {
+                        width: 24,
+                        height: 24
+                    }
+                },
+                {
+                    removeAttrs: ['style', 'fill', 'opacity']
                 }
-            },{
-                transformsWithOnePath: {
-                    width: 10,
-                    height: 10
-                }
-            }, {
-                removeXMLNS: true
-            }, {
-                removeTitle: true
-            }]
+            ]
         }))
         .pipe(svg2symbol())
-        .pipe(gulp.dest('symbol'));
+        .pipe(gulp.dest('res'));
 });
 
-gulp.task('default', ['svgstore']);
+gulp.task('default', ['svg']);
 
 ```
 
