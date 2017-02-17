@@ -5,25 +5,72 @@ var path = require('path');
 
 gulp.task('svgstore', function () {
     return gulp
-        .src('svg/*.svg')
+        .src('./test/*.svg')
         .pipe(svgmin({
-            plugins: [{
-                removeAttrs: {
-                    attrs: ['opacity', 'fill']
+            full: true,
+            plugins: [
+                "removeDoctype",
+                "removeXMLProcInst",
+                "removeComments",
+                "removeMetadata",
+                {
+                    removeXMLNS: true
+                },
+                "removeEditorsNSData",
+                "cleanupAttrs",
+                "minifyStyles",
+                "convertStyleToAttrs",
+                "cleanupIDs",
+                {
+                    removeRasterImages: true
+                },
+                "removeUselessDefs",
+                "cleanupNumericValues",
+                "cleanupListOfValues",
+                "convertColors",
+                "removeUnknownsAndDefaults",
+                "removeNonInheritableGroupAttrs",
+                "removeUselessStrokeAndFill",
+                "cleanupEnableBackground",
+                "removeHiddenElems",
+                "removeEmptyText",
+                "convertShapeToPath",
+                "moveElemsAttrsToGroup",
+                "moveGroupAttrsToElems",
+                "collapseGroups",
+                "convertPathData",
+                "convertTransform",
+                "removeEmptyAttrs",
+                "removeEmptyContainers",
+                "mergePaths",
+                "removeUnusedNS",
+                {
+                    sortAttrs: true
+                },
+                {
+                    removeTitle: true
+                },
+                "removeDesc",
+                "removeDimensions",
+                // "removeElementsByAttr",
+                // "addClassesToSVGElement",
+                {
+                    removeStyleElement: true
+                },
+                // "addAttributesToSVGElement",
+                {
+                    transformsWithOnePath: {
+                        width: 24,
+                        height: 24
+                    }
+                },
+                {
+                    removeAttrs: ['style', 'fill', 'opacity']
                 }
-            },{
-                transformsWithOnePath: {
-                    width: 10,
-                    height: 10
-                }
-            }, {
-                removeXMLNS: true
-            }, {
-                removeTitle: true
-            }]
+            ]
         }))
         .pipe(svg2symbol())
-        .pipe(gulp.dest('symbol'));
+        .pipe(gulp.dest('res'));
 });
 
 gulp.task('default', ['svgstore']);
