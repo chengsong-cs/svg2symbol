@@ -7,7 +7,7 @@ transfrom SVG file to symbol file
 
 recommend use with `gulp-svgmin` to optimize svg
 
-***notice:*** if you want to know why i write a lot of config code for svgmin plugin, please look at this [issue]('https://github.com/svg/svgo/issues/665')
+***notice:*** if you want to know why i write a lot of config code for svgmin plugin, please look at this [issue](https://github.com/svg/svgo/issues/665)
 
 ```
 var gulp = require('gulp');
