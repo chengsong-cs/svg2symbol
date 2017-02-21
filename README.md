@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/sunshiner/svg2symbol.svg?branch=master)](https://travis-ci.org/sunshiner/svg2symbol) [![npm](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com/package/gulp-svg2symbol)
+[![Build Status](https://travis-ci.org/sunshiner/svg2symbol.svg?branch=master)](https://travis-ci.org/sunshiner/svg2symbol) [![npm](https://img.shields.io/npm/v/gulp-svg2symbol.svg)](https://www.npmjs.com/package/gulp-svg2symbol)
 
 # svg2symbol
 transfrom SVG file to symbol file
